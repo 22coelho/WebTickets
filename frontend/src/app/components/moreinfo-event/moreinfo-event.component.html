@@ -1,0 +1,68 @@
+<app-header></app-header>
+<div class="container">
+  <div style="margin-top: 50px">
+    <button
+      type="button"
+      class="btn btn-primary"
+      id="notification"
+      (click)="back()"
+    >
+      <div class="mdc-fab__ripple"></div>
+      <span class="mdc-fab__label">Voltar</span>
+    </button>
+    <table
+      class="table table-borderless"
+      *ngIf="event !== undefined"
+    >
+      <thead>
+        <tr>
+          <th style="width: 80%" scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="imagecontainer">
+              <img class="imageEvent" src="{{ event.imagem }}" />
+            </div>
+            <h1>
+              <b>{{ event.name }}</b>
+              <h3 *ngIf="event.capacity === 0" style="color: red">ESGOTADO!</h3>
+            </h1>
+            <h2>Responsável: {{ event.owner }}</h2>
+            <h3>Data: {{ event.date }}</h3>
+            <h3>Descrição: {{ event.description }}</h3>
+            <h3>
+              Localização: {{ event.location.address }},
+              {{ event.location.name }}
+            </h3>
+            <h3 class="alert_p">Teste Covid - Necessário</h3>
+            <h3 *ngIf="event.capacity !== 0">
+              Lotação máxima : {{ event.capacity }}
+            </h3>
+            <h3>
+              <b>Preço por bilhete : {{ event.ticketPrice }} &euro;</b>
+            </h3>
+            <h5>
+              Para mais informações, contacte o responsável:
+              {{ event.contacto }}
+            </h5>
+            <button *ngIf="event.capacity !== 0 " type="button"  class=" btn btn-primary position-relative bottom-0 start-50 translate-middle-x " (click)="buyticket(event._id)">
+                <div class="mdc-fab__ripple"></div>
+                <span class="mdc-fab__label">Comprar bilhete</span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <span></span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<% if(typeof query !="undefined" ) { %>
+    <li class="nav-item">
+        <a class="nav-link" href=<%- `/${query}/event` %>>Adicionar Evento</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href=<%- `/${query}/myevents` %>>Meus Eventos</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href=<%- `/${query}/local` %>>Adicionar Localização</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/login">Logout</a>
+    </li>
+    <% } else if(typeof query=="undefined" && typeof id=="undefined" ) { %>
+        <li class="nav-item">
+            <a class="nav-link" href="/register">Criar Conta</a>
+        </li>
+        <% } else {%>
+            <li class="nav-item">
+                <a class="nav-link" href=<%- `/${id}/event` %>>Adicionar Evento</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href=<%- `/${id}/local` %>>Adicionar Localização</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/login">Logout</a>
+            </li>
+            <% } %>

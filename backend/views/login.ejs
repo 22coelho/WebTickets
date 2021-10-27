@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="icon" href="/images/imagem.ico">
+  </link>
+  <title>Área de Login</title>
+</head>
+
+<body>
+  <div class="log-form">
+    <h2>Faça login na sua conta</h2><img class="img_center" src="/images/imagem.png"></a>
+    <%- include("./partials/warning") %>
+    <form class="form1" method="POST">
+      <input type="text" title="email" id="email" name="email" placeholder="Email" />
+      <input type="password" title="password" id="password" name="password" placeholder="Password" />
+      <div class="container-quest">
+        <button id="submit" type="submit" class="btn">Login</button>
+        <a class="a forgot" href="#">Esqueceu a palavra-passe?</a>
+        <a class="a noacc" href="/register">Não tem conta? Registe-se</a>
+      </div>
+    </form>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+#notification {
+  float: left;
+  margin-top: 40px;
+  margin-left: 100px;
+}
+
+.chartsleft,
+.chartsright {
+  max-width: 50%;
+  margin-top: 2em;
+}
+
+.chartspair {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: -100px;
+}
+
+.chartsleft {
+  margin-left: 5em;
+  margin-right: 1em;
+  float: left;
+}
+.chartsright {
+  margin-right: 5em;
+  margin-left: 1em;
+  float: right;
+}
+
+@media (max-width: 767px) {
+  .chartspair {
+    width: auto;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: -50px;
+  }
+
+  .chartsleft {
+    margin-left: 1em;
+    margin-right: 1em;
+
+  }
+  .chartsright {
+    margin-right: 1em;
+    margin-left: 1em;
+
+  }
+}

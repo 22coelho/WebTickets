@@ -1,0 +1,38 @@
+#notification {
+  float: right;
+  margin-bottom: 50px;
+}
+#graphs {
+  float: right;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 50px;
+  border: none;
+  background-color: #3a7d80 !important;
+}
+
+table {
+  border-collapse: separate;
+  -moz-border-radius: 6px;
+  margin-left: auto;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.mat-mini-fab.mat-primary {
+  background-color: #3a7d80;
+}
+
+.button-container {
+  height: 136px;
+}
+.edit,
+.delete {
+  height: 68px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.delete > a {
+  transform: scale(1.5);
+}

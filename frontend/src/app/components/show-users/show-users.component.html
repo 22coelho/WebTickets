@@ -1,0 +1,65 @@
+<app-header></app-header>
+<div class="container">
+  <div style="margin-top: 50px">
+    <button
+      (click)="showRequests()"
+      *ngIf="this.n_requests != undefined && this.n_requests > 0"
+      type="button"
+      class="btn btn-primary"
+      id="notification"
+    >
+      Pedidos para Promotor
+      <span class="badge badge-light">{{ this.n_requests }}</span>
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      id="graphs"
+      (click)="showdashboards()"
+    >
+      <div class="mdc-fabripple"></div>
+      <span class="mdc-fablabel">Gráficos</span>
+    </button>
+    <table *ngIf="users?.length > 0" class="table table-borderless">
+      <thead>
+        <tr>
+          <th style="width: 80%" scope="col">Utilizador</th>
+          <th style="width: 20%" scope="col">Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>
+            <h2>{{ user.firstName }} &#32; {{ user.lastName }}</h2>
+            <p>{{ user.typeUser }}</p>
+            <p>{{ user.email }}</p>
+          </td>
+          <td *ngIf="user.typeUser != 'admin'">
+            <div class="button-container">  
+              <div class="delete">
+                <a mat-mini-fab color="primary" (click)="deleteUser(user._id)">
+                  <mat-icon>delete_outline</mat-icon>
+                </a>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div
+      class="container-sm justify-content-center text-center"
+      *ngIf="users?.length == 0"
+    >
+      <h1 class="display-1">Sem utilizadores na plataforma.</h1>
+    </div>
+  </div>
+</div>
+<div class="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <span></span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,101 @@
+<div class="log-form">
+  <h2>Crie a sua conta</h2>
+  <img class="img_center" src="../../../assets/imagem.png" />
+  <form class="form1" [formGroup]="user">
+    <small
+      *ngIf="
+        (user.get('firstName')!.hasError('required') &&
+          user.get('firstName')!.touched) ||
+        (user.get('firstName')!.dirty && user.get('firstName')!.invalid)
+      "
+      class="text-danger"
+      >Campo obrigatório/inválido</small
+    >
+    <input
+      formControlName="firstName"
+      [class.is-invalid]="
+        user.get('firstName')!.invalid && user.get('firstName')!.touched
+      "
+      type="text"
+      title="fname"
+      id="name"
+      name="firstName"
+      placeholder="Primeiro Nome"
+    />
+    <small
+      *ngIf="
+        (user.get('lastName')!.hasError('required') &&
+          user.get('lastName')!.touched) ||
+        (user.get('lastName')!.dirty && user.get('lastName')!.invalid)
+      "
+      class="text-danger"
+      >Campo obrigatório/inválido</small
+    >
+    <input
+      formControlName="lastName"
+      [class.is-invalid]="
+        user.get('lastName')!.invalid && user.get('lastName')!.touched
+      "
+      type="text"
+      title="lname"
+      id="name"
+      name="lastName"
+      placeholder="Último Nome"
+    />
+    <small
+      *ngIf="
+        (user.get('email')!.hasError('required') &&
+          user.get('email')!.touched) ||
+        (user.get('email')!.dirty && user.get('email')!.invalid)
+      "
+      class="text-danger"
+      >Campo obrigatório/inválido</small
+    >
+    <input
+      formControlName="email"
+      [class.is-invalid]="
+        user.get('email')!.invalid && user.get('email')!.touched
+      "
+      type="text"
+      title="email"
+      id="email"
+      name="email"
+      placeholder="Email"
+      autocomplete="off"
+    />
+    <small
+      *ngIf="
+        (user.get('password')!.hasError('required') &&
+          user.get('password')!.touched) ||
+        (user.get('password')!.dirty && user.get('password')!.invalid)
+      "
+      class="text-danger"
+      >Campo obrigatório/inválido</small
+    >
+    <input
+      formControlName="password"
+      [class.is-invalid]="
+        user.get('password')!.invalid && user.get('password')!.touched
+      "
+      type="password"
+      title="pw"
+      id="pw"
+      name="password"
+      placeholder="Password"
+      autocomplete="off"
+      required
+    />
+    <div class="container-quest">
+      <button
+        (click)="register()"
+        type="button"
+        id="submit"
+        type="submit"
+        class="btn"
+      >
+        Registar
+      </button>
+      <a class="a alracc" routerLink="/login">Já tem conta? Faça login aqui</a>
+    </div>
+  </form>
+</div>

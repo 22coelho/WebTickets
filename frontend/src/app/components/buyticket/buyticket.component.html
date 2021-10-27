@@ -1,0 +1,106 @@
+<app-header></app-header>
+<div
+  class="container shadow-lg p-3 mb-5 bg-body rounded-1"
+  *ngIf="event !== undefined || user !== undefined"
+>
+  <form
+    class="position-relative"
+    [formGroup]="form"
+    (submit)="submit()"
+    *ngIf="this.form"
+  >
+    <div
+      *ngIf="
+        (form.get('quantity')!.hasError('required') &&
+          form.get('quantity')!.touched) ||
+        (form.get('quantity')!.dirty && form.get('quantity')!.invalid)
+      "
+      class="alert alert-danger"
+      role="alert"
+    >
+      Campo obrigatório/inválido
+    </div>
+    <div
+      *ngIf="
+        (form.get('nif')!.hasError('required') && form.get('nif')!.touched) ||
+        (form.get('nif')!.dirty && form.get('nif')!.invalid)
+      "
+      class="alert alert-danger"
+      role="alert"
+    >
+      Campo obrigatório/inválido
+    </div>
+    <div class="form-group">
+      <label for="inputNameEvent">Nome Completo: </label>
+      <input
+        formControlName="name"
+        type="text"
+        class="form-control"
+        id="inputNameTicket"
+        value="{{ user.firstName + ' ' + user.lastName }}"
+      />
+    </div>
+    <div class="form-group">
+      <label for="inputEmailEvent">Email : </label>
+      <input
+        formControlName="email"
+        type="email"
+        class="form-control"
+        id="inputEmailTicket"
+        value="{{ user.email }}"
+      />
+    </div>
+    <div class="form-group">
+      <label for="inputNifEvent">NIF : </label>
+      <input
+        formControlName="nif"
+        type="number"
+        class="form-control"
+        id="inputNIFTicket"
+      />
+    </div>
+    <div class="form-group">
+      <label for="inputQuantityEvent">Quantidade : </label>
+      <input
+        formControlName="quantity"
+        type="number"
+        class="form-control"
+        id="inputQuantityTicket"
+      />
+    </div>
+    <div class="form-group">
+      <label for="inputPriceEvent">Teste COVID - Formato PDF <b>(Deve conter os testes de todos os participantes envolvidos):</b> </label>
+      <input formControlName="file" (change)="selectImage($event)" type="file" class="form-control" data-max-size="2048" accept="application/pdf" />
+    </div>
+    <div class="position-relative bottom-0 start-50 translate-middle-x">
+      <button type="submit" class="btn btnConc">Concluir</button>
+      <button
+        type="button"
+        (click)="back()"
+        class="btn btn-danger"
+        id="cancButton"
+      >
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>
+<div class="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <span></span>
+      </div>
+      <div class="col-md-6">
+        <div class="copyright-menu">
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

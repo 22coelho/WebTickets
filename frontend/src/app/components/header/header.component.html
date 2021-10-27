@@ -1,0 +1,98 @@
+<nav class="navbar navbar-expand-sm bg-transparent">
+  <a class="navbar-brand" href="#">
+    <img
+      src="../../assets/imagem.png"
+      class="d-inline-block align-top"
+      alt=""
+      width="170"
+      height="110"
+    />
+  </a>
+
+  <ul class="navbar-nav">
+    <li
+      *ngIf="
+        this.currentUser != undefined &&
+        (this.currentUser.typeUser == 'client' ||
+          this.currentUser.typeUser == 'admin' ||
+          this.currentUser.typeUser == 'promoter')
+      "
+      [ngClass]="{ active: getUrl() === '/home' }"
+      class="nav-item"
+    >
+      <a class="nav-link" routerLink="/home"> Home </a>
+    </li>
+
+    <li
+      *ngIf="
+        this.currentUser != undefined &&
+        (this.currentUser.typeUser == 'client' ||
+          this.currentUser.typeUser == 'promoter' ||
+          this.currentUser.typeUser == 'admin')
+      "
+      [ngClass]="{ active: getUrl() === '/profile' }"
+      class="nav-item"
+    >
+      <a class="nav-link" routerLink="/profile"> Meu Perfil </a>
+    </li>
+    <li
+    *ngIf="
+      this.currentUser != undefined &&
+      (this.currentUser.typeUser == 'client' ||
+        this.currentUser.typeUser == 'promoter' ||
+        this.currentUser.typeUser == 'admin')
+    "
+    [ngClass]="{ active: getUrl() === '/mytickets' }"
+    class="nav-item"
+  >
+    <a class="nav-link" routerLink="/mytickets"> Meus Bilhetes </a>
+  </li>
+    <li
+      *ngIf="
+        this.currentUser != undefined && this.currentUser.typeUser == 'admin'
+      "
+      [ngClass]="{ active: getUrl() === '/show-users' }"
+      class="nav-item"
+    >
+      <a class="nav-link" routerLink="/show-users">Gestão</a>
+    </li>
+
+    <li
+      *ngIf="
+        this.currentUser != undefined && this.currentUser.typeUser == 'promoter'
+      "
+      [ngClass]="{ active: getUrl() === '/myevents' }"
+      class="nav-item"
+    >
+      <a class="nav-link" href="/myevents"> Meus Eventos </a>
+    </li>
+    <li
+      *ngIf="
+        this.currentUser != undefined && this.currentUser.typeUser == 'promoter'
+      "
+      [ngClass]="{ active: getUrl() === '/add-event' }"
+      class="nav-item"
+    >
+      <a class="nav-link" routerLink="/add-event"> Adicionar Evento </a>
+    </li>
+    <li
+      *ngIf="
+        this.currentUser != undefined &&
+          this.currentUser.typeUser == 'admin'
+      "
+      [ngClass]="{ active: getUrl() === '/add-location' }"
+      class="nav-item"
+    >
+      <a class="nav-link" routerLink="/add-location">Adicionar Localização </a>
+    </li>
+    <li *ngIf="this.currentUser != undefined" class="nav-item">
+      <a class="nav-link" (click)="logout()"> Logout </a>
+    </li>
+    <li *ngIf="this.currentUser == undefined" class="nav-item">
+      <a class="nav-link" (click)="register()"> Registar </a>
+    </li>
+    <li *ngIf="this.currentUser == undefined" class="nav-item">
+      <a class="nav-link" (click)="login()"> Login </a>
+    </li>
+  </ul>
+</nav>

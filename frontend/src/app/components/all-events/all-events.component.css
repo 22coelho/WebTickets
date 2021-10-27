@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-top: 4em;
+  flex-direction: row;
+}
+
+.card {
+  margin-bottom: 3em;
+  margin-right: 2em;
+}
+
+.button-container {
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.button-container > .button-container-child {
+  margin-right: 0.5em;
+}
+
+.mat-mini-fab {
+  background-color: #3a7d80 !important;
+}
+
+img {
+  object-fit: cover;
+}
+@media screen and (max-width: 770px) {
+  .card {
+    width: 110% !important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

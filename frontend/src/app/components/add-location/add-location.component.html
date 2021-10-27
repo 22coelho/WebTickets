@@ -1,0 +1,110 @@
+<app-header></app-header>
+<div class="container shadow-lg p-3 mb-5 bg-body rounded-1">
+  <form class="position-relative" [formGroup]="form" *ngIf="form" (submit)="save()">
+    <div
+      *ngIf="
+        (form.get('name')!.hasError('required') && form.get('name')!.touched) ||
+        (form.get('name')!.dirty && form.get('name')!.invalid)
+      "
+      class="alert alert-danger"
+      role="alert"
+    >
+      Campo obrigatório/inválido
+    </div>
+    <div
+      *ngIf="
+        (form.get('latitude')!.hasError('required') && form.get('latitude')!.touched) ||
+        (form.get('latitude')!.dirty && form.get('latitude')!.invalid)
+      "
+      class="alert alert-danger"
+      role="alert"
+    >
+      Campo obrigatório/inválido
+    </div>
+    <div
+      *ngIf="
+        (form.get('longitude')!.hasError('required') && form.get('longitude')!.touched) ||
+        (form.get('longitude')!.dirty && form.get('longitude')!.invalid)
+      "
+      class="alert alert-danger"
+      role="alert"
+    >
+      Campo obrigatório/inválido
+    </div>
+    <div
+      *ngIf="
+        (form.get('morada')!.hasError('required') && form.get('morada')!.touched) ||
+        (form.get('morada')!.dirty && form.get('morada')!.invalid)
+      "
+      class="alert alert-danger"
+      role="alert"
+    >
+      Campo obrigatório/inválido
+    </div>
+    <div class="form-group">
+      <label for="inputNameLocation">Nome: </label>
+      <input
+      formControlName="name"
+        type="text"
+        class="form-control"
+        id="inputNameLocation"
+        placeholder="Insira o nome do local"
+      />
+    </div>
+    <div class="form-group">
+      <label for="inputLatitudeLocation">Latitude: </label>
+      <input
+      formControlName="latitude"
+        type="number"
+        class="form-control"
+        id="inputLatitudeLocation"
+        placeholder="Insira a latitude"
+      />
+    </div>
+    <div class="form-group">
+      <label for="inputLogitudeLocation">Longitude: </label>
+      <input
+      formControlName="longitude"
+        type="number"
+        class="form-control"
+        id="inputLogitudeLocation"
+        placeholder="Insira a longitude"
+      />
+    </div>
+    <div class="form-group">
+      <label for="inputAddressLocation">Morada: </label>
+      <input
+      formControlName="morada"
+        type="text"
+        class="form-control"
+        id="inputAddressLocation"
+        placeholder="Insira a morada"
+      />
+    </div>
+    <button
+      type="submit"
+      class="btn position-relative bottom-0 start-50 translate-middle-x"
+    >
+      Adicionar
+    </button>
+  </form>
+</div>
+<div class="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <span></span>
+      </div>
+      <div class="col-md-6">
+        <div class="copyright-menu">
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

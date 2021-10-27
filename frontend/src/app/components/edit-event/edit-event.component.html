@@ -1,0 +1,156 @@
+<app-header></app-header>
+<div class="container shadow-lg p-3 mb-5 bg-body rounded-1">
+  <form class="position-relative" [formGroup]="form" *ngIf="form" (submit)="save()">
+    <div
+      *ngIf="
+        (form.get('name')!.hasError('required') && form.get('name')!.touched) ||
+        (form.get('name')!.dirty && form.get('name')!.invalid)
+      "
+      class="alert alert-danger"
+      role="alert"
+    >
+      Campo obrigatório/inválido
+    </div>
+    <div
+      *ngIf="
+        (form.get('description')!.hasError('required') &&
+          form.get('description')!.touched) ||
+        (form.get('description')!.dirty && form.get('description')!.invalid)
+      "
+      class="alert alert-danger"
+      role="alert"
+    >
+      Campo obrigatório/inválido
+    </div>
+    <div
+      *ngIf="
+        (form.get('date')!.hasError('required') && form.get('date')!.touched) ||
+        (form.get('date')!.dirty && form.get('date')!.invalid)
+      "
+      class="alert alert-danger"
+      role="alert"
+    >
+      Campo obrigatório/inválido
+    </div>
+    <div
+      *ngIf="
+        (form.get('location')!.hasError('required') &&
+          form.get('location')!.touched) ||
+        (form.get('location')!.dirty && form.get('location')!.invalid)
+      "
+      class="alert alert-danger"
+      role="alert"
+    >
+      Campo obrigatório/inválido
+    </div>
+    <div
+      *ngIf="
+        (form.get('capacity')!.hasError('required') &&
+          form.get('capacity')!.touched) ||
+        (form.get('capacity')!.dirty && form.get('capacity')!.invalid)
+      "
+      class="alert alert-danger"
+      role="alert"
+    >
+      Campo obrigatório/inválido (Escolha entre 1 a 9999)
+    </div>
+    <div
+      *ngIf="
+        (form.get('ticketPrice')!.hasError('required') &&
+          form.get('ticketPrice')!.touched) ||
+        (form.get('ticketPrice')!.dirty && form.get('ticketPrice')!.invalid)
+      "
+      class="alert alert-danger"
+      role="alert"
+    >
+      Campo obrigatório/inválido (Escolha entre 1 a 9999)
+    </div>
+    <div class="form-group">
+      <label for="inputNameEvent">Nome: </label>
+      <input
+        formControlName="name"
+        type="text"
+        class="form-control"
+        id="inputNameEvent"
+        placeholder="Insira o nome do evento"
+      />
+    </div>
+    <div class="form-group">
+      <label for="inputDescriptionEvent">Descrição: </label>
+      <textarea
+        formControlName="description"
+        type="text"
+        class="form-control"
+        id="inputDescriptionEvent"
+        placeholder="Insira a descrição do evento"
+        rows="2"
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="inputDateEvent">Data e Hora: </label>
+      <input
+        formControlName="date"
+        type="datetime-local"
+        class="form-control"
+        id="inputDateEvent"
+      />
+    </div>
+    <div class="form-group">
+      <label for="inputLocationEvent">Localização: </label>
+      <select formControlName="location" class="form-select form-select" >
+        <option *ngFor="let location of locations" value="{{location.name}}">{{location.name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="inputCapacityEvent">Lotação: </label>
+      <input
+        formControlName="capacity"
+        type="number"
+        class="form-control"
+        id="inputCapacityEvent"
+        min="10"
+        max="5000"
+      />
+    </div>
+    <div class="form-group">
+      <label for="inputPriceEvent">Preço: </label>
+      <input
+        formControlName="ticketPrice"
+        type="number"
+        class="form-control"
+        id="inputPriceEvent"
+        min="0"
+        max="1000"
+      />
+    </div>
+    <div class="form-group">
+      <label for="inputPriceEvent">Imagem (Opcional): </label>
+      <input (change)="selectImage($event)" type="file" class="form-control" />
+    </div>
+    <button
+      type="submit"
+      class="btn position-relative bottom-0 start-50 translate-middle-x"
+    >
+      Concluir
+    </button>
+  </form>
+</div>
+<div class="copyright">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <span></span>
+        </div>
+        <div class="col-md-6">
+          <div class="copyright-menu">
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

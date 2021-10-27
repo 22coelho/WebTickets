@@ -1,0 +1,110 @@
+GET http://localhost:3000/users
+
+#EventController : events.js
+
+###
+GET http://localhost:3000/events
+
+### 
+POST http://localhost:3000/6090791b2bddd7258493df5c/event
+Content-Type: application/json
+
+{
+  "name": "Evento REST API",
+  "description": "Teste para testar a rest api",
+  "date": "{{$datetime iso8601}}",
+  "capacity": "45",
+  "ticketPrice": "60",
+  "local": "Gaia"
+}
+
+### GET http://localhost:3000/6090791b2bddd7258493df5c/myevents
+###
+GET http://localhost:3000/myevents
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InRpY2tldHMiOltdLCJfaWQiOiI2MGIzN2VkMWIyYzk5MTYxM2M3NGE2NDciLCJmaXJzdE5hbWUiOiJNYXJpYSIsImxhc3ROYW1lIjoiVGF2YXJlcyIsImVtYWlsIjoibWFyaWF0YXZhcmVzQHByb21vdG9yLnB0IiwicGFzc3dvcmQiOiIkMmEkMDgkUmNpNnoycll3RmVUU2RySTVFZ0N6LnQ1TnJ1VzFrNWpvSy5tR1FNamZ4eEFnS0Y3MUNKOHUiLCJ0eXBlVXNlciI6InByb21vdGVyIiwiZGF0ZSI6IjIwMjEtMDUtMzBUMTI6MDI6MjUuNTY0WiIsIl9fdiI6MCwic2VudFJlcXVlc3QiOnRydWV9LCJpYXQiOjE2MjMxODc3NDAsImV4cCI6MTYyMzI3NDE0MH0.kxwfRW5IzKGiwDwGSvQ0reyVJFXTuIumXmzu8kSOPms
+
+
+### DELETE http://localhost:3000/6090791b2bddd7258493df5c/myevents/60a6b8f6eb2a2c4eec2d98a4
+
+### PUT http://localhost:3000/myevents/60b3c91f7404f054b00ec2a7
+#x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYwYjM3ZWQxYjJjOTkxNjEzYzc0YTY0NyIsImZpcnN0TmFtZSI6Ik1hcmlhIiwibGFzdE5hbWUiOiJUYXZhcmVzIiwiZW1haWwiOiJtYXJpYXRhdmFyZXNAcHJvbW90b3IucHQiLCJwYXNzd29yZCI6IiQyYSQwOCRSY2k2ejJyWXdGZVRTZHJJNUVnQ3oudDVOcnVXMWs1am9LLm1HUU1qZnh4QWdLRjcxQ0o4dSIsInR5cGVVc2VyIjoicHJvbW90ZXIiLCJkYXRlIjoiMjAyMS0wNS0zMFQxMjowMjoyNS41NjRaIiwiX192IjowfSwiaWF0IjoxNjIyMzg2NzM2LCJleHAiOjE2MjI0NzMxMzZ9.7BRoUT9LLer4DgsvXLf7mTovQ30YaoZMSZLC_IukyP8
+#Content-Type: application/json
+#{
+ #   "name": "Teste UPDATE",
+ #  "description": "Evento Atualizado",
+ # "ticketPrice": "60"
+#} -> foi alterado para post pois permite a alteração da imagem de um evento
+
+### GET http://localhost:3000/6090791b2bddd7258493df5c/seemore/60a6b22befebdf2dcc128ed6
+
+###
+POST  http://localhost:3000/buyticket/60b960b5b3829310902cddb4
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InRpY2tldHMiOltdLCJfaWQiOiI2MGIzN2VkMWIyYzk5MTYxM2M3NGE2NDciLCJmaXJzdE5hbWUiOiJNYXJpYSIsImxhc3ROYW1lIjoiVGF2YXJlcyIsImVtYWlsIjoibWFyaWF0YXZhcmVzQHByb21vdG9yLnB0IiwicGFzc3dvcmQiOiIkMmEkMDgkUmNpNnoycll3RmVUU2RySTVFZ0N6LnQ1TnJ1VzFrNWpvSy5tR1FNamZ4eEFnS0Y3MUNKOHUiLCJ0eXBlVXNlciI6InByb21vdGVyIiwiZGF0ZSI6IjIwMjEtMDUtMzBUMTI6MDI6MjUuNTY0WiIsIl9fdiI6MCwic2VudFJlcXVlc3QiOnRydWV9LCJpYXQiOjE2MjMxODc3NDAsImV4cCI6MTYyMzI3NDE0MH0.kxwfRW5IzKGiwDwGSvQ0reyVJFXTuIumXmzu8kSOPms
+Content-Type: application/json
+
+{
+    "quantity": 1
+}
+
+#LocationControler : locations.js
+
+###
+GET http://localhost:3000/locations
+
+###
+POST http://localhost:3000/6090791b2bddd7258493df5c/local
+Content-Type: application/json
+
+{
+    "lat": 90,
+    "lon": -10,
+    "name": "ESTG",
+    "address": "Rua do Curral"
+}
+
+
+#AuthController : auth.js
+
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "mariatavares@promotor.pt",
+    "password": "mariatavares"
+}
+
+###
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "firstName": "Aeste",
+    "lastName": "XEST API guest",
+    "email": "restapie@be.com",
+    "password": "12345123451234",
+    "typeUser": "guest"
+}
+
+###
+GET http://localhost:3000/profile
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InRpY2tldHNDYW5jZWxlZCI6W10sInRpY2tldHMiOltdLCJhY3RpdmUiOnRydWUsIl9pZCI6IjYwYzYyYjkwN2VmYWJiMmYzYzkzZGZmOSIsImZpcnN0TmFtZSI6IlRlc3RlIiwibGFzdE5hbWUiOiJSRVNUIEFQSSBndWVzdCIsImVtYWlsIjoicmVzdGFwaUBlc3RnLmlwcC5wdCIsInBhc3N3b3JkIjoiJDJhJDA4JGp2Uy9HSm1PTVRzbjhwY3BMeC5GeC5BZndxNXVkVVVlVG9aOXh4bG5mb1NWOURCV3BmRUoyIiwidHlwZVVzZXIiOiJjbGllbnQiLCJzZW50UmVxdWVzdCI6ZmFsc2UsImRhdGUiOiIyMDIxLTA2LTEzVDE2OjAwOjE2LjgyMloiLCJfX3YiOjB9LCJpYXQiOjE2MjM2MDAwMTYsImV4cCI6MTYyMzY4NDYxNn0.dyKOJ2rIJUZwK4815FtPUVgeV-kFg-3KZFb48FS87Ts
+
+
+###
+PUT http://localhost:3000/edit-profile
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjYwYjAxYjM1NjgwM2UyMWZhODAwMTI2ZSIsImZpcnN0TmFtZSI6IlRpYWdvIiwibGFzdE5hbWUiOiJTaWx2YSIsImVtYWlsIjoidGlhZ29zaWx2YUB0ZXN0ZS5jb20iLCJwYXNzd29yZCI6IiQyYSQwOCQ2NzdLODIzeTJWcjVxMURnMlFodDllbU5sYjBpeUswemRmUXRJbFFIUS5QWFozZ3I1bGFweSIsInR5cGVVc2VyIjoicHJvbW90ZXIiLCJkYXRlIjoiMjAyMS0wNS0yN1QyMjoyMDozNy44MTZaIiwiX192IjowfSwiaWF0IjoxNjIyMjE1Njc5LCJleHAiOjE2MjIzMDIwNzl9.PhT0SoelQEErWEqVT_cSwM0F71cCZsZ7FKnlBbtFcek
+Content-Type: application/json
+
+{
+    "firstName": "Tiago",
+    "lastName": "Mimo",
+    "email": "tiagosilva@teste.com" 
+}
+
+
+#UserController : users.js
+
+### 
+GET http://localhost:3000/users 
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYTk4ZTQ5MWUwMmIzNDdhY2ExMTUwOCIsImlhdCI6MTYyMTcyNDc0NSwiZXhwIjoxNjIxODA5MzQ1fQ.ruX_LIpL_4HdU29Rvkz_GPn-q7dccyJPAFLuMts3jvw

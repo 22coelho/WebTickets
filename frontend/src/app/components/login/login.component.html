@@ -1,0 +1,52 @@
+<div class="log-form">
+  <h2>Faça login na sua conta</h2>
+  <img class="img_center" src="../../../assets/imagem.png" />
+  <form class="form1" [formGroup]="user">
+    <small
+      *ngIf="
+        (user.get('email')!.hasError('required') &&
+          user.get('email')!.touched) ||
+        (user.get('email')!.dirty && user.get('email')!.invalid)
+      "
+      class="text-danger"
+      >Campo obrigatório/inválido</small
+    >
+    <input
+      formControlName="email"
+      [class.is-invalid]="
+        user.get('email')!.invalid && user.get('email')!.touched
+      "
+      type="text"
+      title="email"
+      id="email"
+      name="email"
+      placeholder="Email"
+    />
+    <small
+      *ngIf="
+        (user.get('password')!.hasError('required') &&
+          user.get('password')!.touched) ||
+        (user.get('password')!.dirty && user.get('password')!.invalid)
+      "
+      class="text-danger"
+      >Campo obrigatório/inválido</small
+    >
+    <input
+      formControlName="password"
+      [class.is-invalid]="
+      user.get('password')!.invalid && user.get('password')!.touched
+    "
+      type="password"
+      title="password"
+      id="password"
+      name="password"
+      placeholder="Password"
+    />
+    <div class="container-quest">
+      <button id="submit" type="submit" class="btn" (click)="login()">
+        Login
+      </button>
+      <a class="a noacc" routerLink="/register">Não tem conta? Registe-se</a>
+    </div>
+  </form>
+</div>

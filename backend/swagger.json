@@ -1,0 +1,595 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2.0.0",
+    "title": "Web Tickets API",
+    "description": "REST API for web tickets"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Events",
+      "description": "API for events in the system"
+    },
+    {
+      "name": "Locals",
+      "description": "API for locations in the system"
+    },
+    {
+      "name": "Users",
+      "description": "API for users in the system"
+    }
+  ],
+  "schemes": ["http"],
+  "securityScheme": {
+    "authentication": {
+      "type": "x-access-token",
+      "in": "header",
+      "name": "token"
+    }
+  },
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/login": {
+      "post": {
+        "tags": ["Users"],
+        "description": "Logs the user into the system",
+        "parameters": [
+          {
+            "name": "User",
+            "in": "body",
+            "description": "User that we want to login",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "description": "The user email"
+                },
+                "password": {
+                  "type": "number",
+                  "description": "The user password"
+                }
+              }
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "User logged in",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "auth": {
+                  "type": "boolean"
+                },
+                "token": {
+                  "type": "string",
+                  "description": "The user token"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/register": {
+      "post": {
+        "tags": ["Users"],
+        "description": "Create new user in system",
+        "parameters": [
+          {
+            "name": "User",
+            "in": "body",
+            "description": "User that we want to create",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string",
+                  "description": "The user first name"
+                },
+                "lastName": {
+                  "type": "string",
+                  "description": "The user last name"
+                },
+                "email": {
+                  "type": "string",
+                  "description": "The user email"
+                },
+                "password": {
+                  "type": "number",
+                  "description": "The user password"
+                }
+              }
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New user is created",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "auth": {
+                  "type": "boolean"
+                },
+                "token": {
+                  "type": "string",
+                  "description": "The user token"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/logout": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Logs out the user",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "auth": {
+                  "type": "boolean"
+                },
+                "token": {
+                  "type": "string",
+                  "nullable": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profile": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get the profile of user",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/edit-profile": {
+      "put": {
+        "tags": ["Users"],
+        "description": "Edit a user's profile",
+        "security": {
+          "authentication": []
+        },
+        "parameters": [
+          {
+            "name": "User",
+            "in": "body",
+            "description": "Profile that we want to edit",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string",
+                  "description": "The user first name"
+                },
+                "lastName": {
+                  "type": "string",
+                  "description": "The user last name"
+                },
+                "email": {
+                  "type": "string",
+                  "description": "The user email"
+                },
+                "password": {
+                  "type": "number",
+                  "description": "The user password"
+                }
+              }
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "cancelticket":{
+      "post":{
+        "tags":["Users"],
+        "description": "Cancel tickets that we bought",
+        "security": {
+          "authentication": []
+        },
+        "parameters": [
+          {
+            "name": "Ticket",
+            "in": "body",
+            "description": "Ticket that we want to cancel",
+            "schema":{
+              "type":"object",
+              "properties": {
+                "quantity": {
+                  "type": "number",
+                  "description": "Quantity of tickets that we want to cancel"
+                },
+                "index": {
+                  "type": "number",
+                  "description": "Index of array tickets"
+                },
+                "ticket": {
+                  "type": "object",
+                  "description": " ticket bought"
+                }
+              }
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/events": {
+      "get": {
+        "tags": ["Events"],
+        "summary": "Get all events in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Event"
+            }
+          }
+        }
+      }
+    },
+    "/:id?/event": {
+      "post": {
+        "tags": ["Events"],
+        "description": "Create new event in system",
+        "security": {
+          "authentication": []
+        },
+        "parameters": [
+          {
+            "name": "Event",
+            "in": "body",
+            "description": "Event that we want to create",
+            "schema": {
+              "$ref": "#/definitions/Event"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New event is created",
+            "schema": {
+              "$ref": "#/definitions/Event"
+            }
+          }
+        }
+      }
+    },
+    "/myevents": {
+      "get": {
+        "tags": ["Events"],
+        "summary": "Gets all user-created system events",
+        "security": {
+          "authentication": []
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Event"
+            }
+          }
+        }
+      }
+    },
+    "/myevents/:ide?": {
+      "delete": {
+        "tags": ["Events"],
+        "summary": "Gets all user-created system events, deleting the selected event",
+        "security": {
+          "authentication": []
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/myevents/:ide":{
+      "post":{
+        "tags":["Events"],
+        "description":"See the selected event",
+        "parameters": [
+          {
+            "name": "Event",
+            "in": "body",
+            "description": "Event that we want to see",
+            "schema":{
+              "$ref":"#/definitions/Event"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "The event is updated",
+            "schema": {
+              "$ref": "#/definitions/Event"
+            }
+          }
+        }
+      }
+    },
+    "/myevents/publish/:ide?":{
+      "put":{
+        "tags":["Events"],
+        "description": "Publish the selected event",
+        "parameters": [
+          {
+            "name":"Event",
+            "in": "body",
+            "description": "Publish the event on the system",
+            "schema":{
+              "type": "object",
+              "properties":{
+                "published": "boolean"
+              }
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "The event is published",
+            "schema": {
+              "$ref": "#/definitions/Event"
+            }
+          }
+        }
+      }
+    },
+    "/editevent/:ide?": {
+      "get": {
+        "tags": ["Events"],
+        "summary": "Event that we want to edit",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Event"
+            }
+          }
+        }
+      }
+    },
+    "/buyticket/:ide":{
+      "post":{
+        "tags":["Events"],
+        "description": "Buy tickets of the selected event",
+        "parameters": [
+          {
+            "name":"Ticket",
+            "in": "body",
+            "description": "Buy tickets of the selected event",
+            "schema":{
+              "type": "object",
+              "proprieties": {
+                "nif": {
+                  "type": "number",
+                  "description": "The nif of a user"
+                },
+                "quantity": {
+                  "type": "number",
+                  "description": "Quantity of tickets that we want to buy"
+                }
+              }
+            }
+          }
+        ],
+        "produces":["application/json"],
+        "responses":{
+          "200": {
+            "description": "Ticket bought"
+          }
+        }
+      }
+    },
+    "/locations":{
+      "get":{
+        "tags": ["Locals"],
+        "summary": "Get all events in system",
+        "responses": {
+          "200":{
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/:id?/local": {
+      "post": {
+        "tags": ["Locals"],
+        "description": "Create new location in system",
+        "parameters": [
+          {
+            "name": "Location",
+            "in": "body",
+            "description": "Location that we want to create",
+            "schema": {
+              "$ref": "#/definitions/Local"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New location is created",
+            "schema": {
+              "$ref": "#/definitions/Local"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "required": ["_id", "firstName", "lastName", "email", "password"],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "typeUser": {
+          "type": "string"
+        },
+        "date": {
+          "type": "date"
+        },
+        "ticketsBought": {
+          "type": "Number"
+        },
+        "ticketsCanceled": {
+          "type": "array"
+        },
+        "numberEvents": {
+          "type": "Number"
+        },
+        "sentRequest": {
+          "type": "boolean"
+        },
+        "tickets": {
+          "type": "array"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Users": {
+      "type": "array",
+      "$ref": "#/definitions/User"
+    },
+    "Event": {
+      "required": [
+        "_id",
+        "owner",
+        "name",
+        "description",
+        "date",
+        "capacity",
+        "ticketPrice"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "owner": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "description": {
+          "type": "string"
+        },
+        "date": {
+          "type": "date"
+        },
+        "capacity": {
+          "type": "Number"
+        },
+        "ticketPrice": {
+          "type": "Number"
+        },
+        "imagem": {
+          "type": "string"
+        },
+        "location": {
+          "type": "Object"
+        },
+        "published": {
+          "type": "boolean"
+        }
+      }
+    },
+    "Events": {
+      "type": "array",
+      "$ref": "#/definitions/Event"
+    },
+    "Local": {
+      "required": ["_id", "name", "coords", "address"],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "coords": {
+          "type": "Object",
+          "lat": {
+            "type": "Number",
+            "uniqueItems": true
+          },
+          "lon": {
+            "type": "Number",
+            "uniqueItems": true
+          }
+        },
+        "address": {
+          "type": "string",
+          "uniqueItems": true
+        }
+      }
+    },
+    "Locals": {
+      "type": "array",
+      "$ref": "#/definitions/Local"
+    }
+  }
+}

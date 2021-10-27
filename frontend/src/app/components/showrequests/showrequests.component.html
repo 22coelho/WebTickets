@@ -1,0 +1,44 @@
+<app-header></app-header>
+<div class="container">
+    <div style="margin-top: 50px">
+        <table *ngIf="requests?.length > 0" class="table table-hover table-borderless">
+            <thead>
+              <tr>
+                <th style="width: 80%" scope="col">Utilizador</th>
+                <th style="width: 20%" scope="col">Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let requests of requests">
+                <td>
+                  <h2>{{ requests.firstName }} &#32; {{ requests.lastName }}</h2>
+                  <p>{{ requests.typeUser }}</p>
+                  <p>{{ requests.email }}</p>
+                </td>
+                <td>
+                  <div class="button-container">
+                    <div class="edit">
+                      <a mat-mini-fab color="primary" class="accept" (click)="acceptRequest(requests._id)">
+                        <mat-icon>done</mat-icon>
+                      </a>
+                    </div>
+                    <div class="delete">
+                      <a mat-mini-fab color="primary" class="refuse" (click)="refuseRequest(requests._id)">
+                        <mat-icon>clear</mat-icon>
+                      </a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button type="button" class="btn btn-primary goBack" routerLink="/show-users">Voltar</button>
+          <div
+            class="container-sm justify-content-center text-center"
+            *ngIf="requests?.length == 0"
+          >
+            <h1 class="display-1">Sem pedidos para promotor. 👍</h1>
+          </div>
+        </div>
+      </div>
+      

@@ -1,0 +1,73 @@
+<app-header></app-header>
+<div class="container">
+  <div style="margin-top: 50px">
+    <button type="button"class="btn btn-primary" id="notification" routerLink="/myevents">
+      <div class="mdc-fab__ripple"></div>
+      <span class="mdc-fab__label">Voltar</span>
+    </button>
+    <table *ngIf="myevents.length > 0" class="table table-borderless">
+      <thead>
+        <tr>
+          <th style="width: 80%" scope="col">Event</th>
+          <th style="width: 20%" scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let event of myevents">
+        <tr *ngIf="event.published === false">
+          <td>
+            <div class="imagecontainer">
+            <img
+              class="imageEvent"
+              src="{{ event.imagem }}"
+            /></div>
+            <h2>{{ event.name }}</h2>
+            <p>{{ event.date }}</p>
+            <p>{{ event.description }}</p>
+            <p>{{ event.location.address }}, {{ event.location.name }}</p>
+            <p class="alert_p">Teste Covid - Necessário</p>
+            <p class="alert_p">Lotação máxima : {{ event.capacity }}</p>
+            <b>Preço por bilhete : {{ event.ticketPrice }} &euro;</b>
+          </td>
+          <td>
+            <div class="button-container">
+              <div class="accept">
+                <a mat-mini-fab color="primary" (click)="publishEvent(event._id)">
+                    <mat-icon>done</mat-icon>
+                </a>
+              </div>
+              <div class="edit">
+                <a mat-mini-fab color="primary"  routerLink="/edit-event/{{ event._id }}">
+                  <mat-icon>edit</mat-icon>
+                </a>
+              </div>
+              <div class="delete">
+                <a
+                  mat-mini-fab
+                  color="primary"
+                  (click)="deleteEvent(event._id)"
+                >
+                  <mat-icon>delete_outline</mat-icon>
+                </a>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div
+      class="container-sm justify-content-center text-center"
+      *ngIf="myevents.length == 0"
+    >
+      <h1 class="display-1">Não tem eventos por publicar!</h1>
+    </div>
+  </div>
+</div>
+<div class="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <span></span>
+      </div>
+    </div>
+  </div>
+</div>

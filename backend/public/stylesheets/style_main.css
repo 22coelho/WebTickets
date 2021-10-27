@@ -1,0 +1,108 @@
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.title_bar {
+  background-color: #3a7d80;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.del_img {
+  margin-left: 35px;
+  height: 65px;
+  width: 85px;
+  padding: 14px 20px;
+}
+
+.a:hover {
+  color: #4caf50;
+}
+
+.alert_p {
+  color: crimson;
+}
+
+label {
+  display: block;
+}
+.logo_front {
+  height: 50px;
+  width: 50px;
+}
+
+button {
+  background-color: #3a7d80;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.buttonH {
+  background-color: #3a7d80;
+  color: white;
+  padding: 5px 25px;
+  margin-left: 30px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 5px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+.conteudo {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+}
+.figure {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+}
+
+@media only screen and (max-width:480px){
+  .buttonH {
+    background-color: #3a7d80;
+    color: white;
+    padding: 5px 10px;
+    margin-left: 30px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+}

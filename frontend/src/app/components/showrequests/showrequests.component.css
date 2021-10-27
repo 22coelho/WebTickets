@@ -1,0 +1,32 @@
+table {
+  border-collapse: separate;
+  border: solid black 1px;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  margin-left: auto;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.accept {
+  background-color: #09b61e;
+}
+.refuse {
+  background-color: #d5270c;
+}
+
+.button-container {
+  height: 136px;
+}
+.visibility,
+.edit,
+.delete {
+  height: 68px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.goBack {
+  background-color: #3a7d80 !important;
+  border: none;
+}

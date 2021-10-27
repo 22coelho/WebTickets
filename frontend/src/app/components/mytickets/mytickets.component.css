@@ -1,0 +1,64 @@
+table {
+  border-collapse: separate;
+  border: solid black 1px;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  margin-left: auto;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.mat-mini-fab.mat-primary {
+  background-color: #3a7d80;
+}
+
+.pricetotal {
+  color: seagreen;
+}
+
+.button-container {
+  height: 260px;
+}
+
+.cancel,
+.download {
+  height: 125px;
+  transform: scale(1.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cancel .mat-primary {
+  background-color: #b30707;
+}
+
+.imagecontainer {
+  float: right;
+  height: 241px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageEvent {
+  width: 290px;
+  height: 210px;
+  object-fit: fill;
+}
+
+@media (max-width: 482px) {
+  .button-container {
+    height: 485px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  img {
+    float: right;
+    width: 150px;
+    height: 150px;
+    object-fit: scale-down;
+  }
+}

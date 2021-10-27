@@ -1,0 +1,134 @@
+<app-header></app-header>
+<div class="container shadow-lg">
+  <div style="margin-top: 50px; padding: 10px">
+    <form class="position-relative" [formGroup]="form" (submit)="submit()">
+      <div
+        *ngIf="
+          (form.get('firstName')!.hasError('required') &&
+            form.get('firstName')!.touched) ||
+          (form.get('firstName')!.dirty && form.get('firstName')!.invalid)
+        "
+        class="alert alert-danger"
+        role="alert"
+      >
+        Campo obrigatório/inválido
+      </div>
+      <div
+        *ngIf="
+          (form.get('lastName')!.hasError('required') &&
+            form.get('lastName')!.touched) ||
+          (form.get('lastName')!.dirty && form.get('lastName')!.invalid)
+        "
+        class="alert alert-danger"
+        role="alert"
+      >
+        Campo obrigatório/inválido
+      </div>
+      <div
+        *ngIf="
+          (form.get('email')!.hasError('required') &&
+            form.get('email')!.touched) ||
+          (form.get('email')!.dirty && form.get('email')!.invalid)
+        "
+        class="alert alert-danger"
+        role="alert"
+      >
+        Campo obrigatório/inválido
+      </div>
+
+      <div class="form-group">
+        <label for="inputFirstName">Primeiro Nome: </label>
+        <input
+          formControlName="firstName"
+          type="text"
+          class="form-control"
+          id="inputFirstName"
+          value="{{ currentUser?.firstName }}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="inputLastName">Último Nome: </label>
+        <input
+          formControlName="lastName"
+          type="text"
+          class="form-control"
+          id="inputLastName"
+          value="{{ currentUser?.lastName }}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="inputEmail">Email: </label>
+        <input
+          formControlName="email"
+          type="email"
+          class="form-control"
+          id="inputEmail"
+          value="{{ currentUser?.email }}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="inputPassword">Password: </label>
+        <input
+          formControlName="password"
+          type="password"
+          class="form-control"
+          id="inputPassword"
+          value="{{ currentUser?.password }}"
+        />
+      </div>
+      <div class="button-container">
+          <button
+            type="button"
+            (click)="showHidden()"
+            [ngClass]="{ invisibility: option === true }"
+            class="btn btn-primary editButton" 
+          >
+            Editar
+          </button>
+          <button
+            type="button"
+            (click)="deleteMe(currentUser?._id)"
+            [ngClass]="{ invisibility: option === true }"
+            class="btn btn-danger deleteButton"
+          >
+            Apagar Conta
+          </button>
+
+        <button
+          type="button"
+          (click)="cancel()"
+          [ngClass]="{ visibility: option === true }"
+          class="btn btn-danger cancButton"
+          id="cancButton"
+        >
+          Cancelar
+        </button>
+        <button
+          type="submit"
+          [ngClass]="{ visibility: option === true }"
+          class="btn btn-primary concButton"
+          id="concButton"
+        >
+          Concluir
+        </button>
+      </div>
+    </form>
+  </div>
+  <div
+    *ngIf="
+      currentUser?.sentRequest == false && currentUser?.typeUser === 'client'
+    "
+    class="card text-center"
+  >
+    <div class="card-body">
+      <h5 class="card-title">Deseja ser promotor?</h5>
+      <p class="card-text">
+        Envie um pedido ao administrador da plataforma WebTickets.
+      </p>
+      <a (click)="sendPromoterRequest()" class="btn btn-primary"
+        >Enviar Pedido</a
+      >
+    </div>
+  </div>
+  
+</div>

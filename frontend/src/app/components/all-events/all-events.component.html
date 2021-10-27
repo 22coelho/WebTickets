@@ -1,0 +1,45 @@
+<div *ngIf="events.length > 0">
+  <mat-progress-spinner
+    [mode]="'indeterminate'"
+    *ngIf="loading | async"
+  ></mat-progress-spinner>
+  <div class="container">
+    <div class="card" style="width: 18rem" *ngFor="let event of events">
+      <img src="{{ event.imagem }}" class="card-img-top" />
+      <div class="card-body">
+        <h5 class="card-title">{{ event.name }}</h5>
+        <p class="card-text" style="color: red" *ngIf="event.capacity == 0">
+          ESGOTADO
+        </p>
+        <p class="card-text">Lotação Restante: {{ event.capacity }}</p>
+        <p class="card-text">Data: {{ event.date }}</p>
+        <p class="card-text">Localização: {{ event.location.address }}</p>
+        <div
+          class="button-container"
+          *ngIf="
+            event.capacity !== 0 && userId !== undefined;
+            else onlyvisibility
+          "
+        >
+          <div class="visibility button-container-child">
+            <a mat-mini-fab routerLink="/moreinfo/{{ event._id }}" class = "mat-mini-fab">
+              <mat-icon>visibility</mat-icon>
+            </a>
+          </div>
+          <div class="cart button-container-child">
+            <a mat-mini-fab routerLink="/buyticket/{{ event._id }}" class = "mat-mini-fab">
+              <mat-icon>add_shopping_cart</mat-icon>
+            </a>
+          </div>
+        </div>
+        <ng-template #onlyvisibility>
+          <div class="onlyvisibility">
+            <a mat-mini-fab routerLink="/moreinfo/{{ event._id }}" class = "mat-mini-fab">
+              <mat-icon>visibility</mat-icon>
+            </a>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
